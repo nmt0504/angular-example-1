@@ -1,12 +1,31 @@
 #wrapper {
 
 }
-	#wrapper table tr th {
-		text-align: center;
+	#wrapper table {
+    border-collapse: collapse;
+    width: 100%;
+	}
+
+	#wrapper table th, td {
+    text-align: left;
+    padding: 8px;
+	}
+
+	#wrapper table tr:nth-child(even){background-color: #AAE5FF}
+	#wrapper table tr:nth-child(odd){background-color: #FFF7AF}
+
+	#wrapper table th {
+    background-color: #4CAF50;
+    color: white;
+	}
+
+	#wrapper .control-action {
+		margin-bottom: 20px;
 	}
 
 	#wrapper h1 {
 		text-align: center;
+		margin-bottom: 30px;
 	}
 
 	#wrapper ul {
