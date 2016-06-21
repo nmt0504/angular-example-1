@@ -1,6 +1,18 @@
 #wrapper {
 
 }
+	#wrapper table tr th {
+		text-align: center;
+	}
+
 	#wrapper h1 {
 		text-align: center;
 	}
+
+	#wrapper ul {
+		margin: auto;
+	}
+
+		#wrapper ul li {
+			cursor: pointer;
+		}

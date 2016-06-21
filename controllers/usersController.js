@@ -1,6 +1,6 @@
 angular
 			.module('ng-usermanage')
-			.controller('usersController', ['$scope', 'usersFactory', function($scope, usersFactory){
+			.controller('usersController', ['$scope', 'usersFactory', 'pagerService', function($scope, usersFactory, pagerService) {
 				
 				$scope.users;
 
@@ -12,6 +12,25 @@ angular
 							$scope.users[i].substr_about += '...';
 						}
 					}
+
+					$scope.pager = {};
+					$scope.setPage = setPage;
+
+					initController();
+
+					function initController() {
+						$scope.setPage(1);
+					}
+
+					function setPage(page) {
+						if(page < 1 || page > $scope.pager.totalPages) {
+							return;
+						}
+						$scope.pager = pagerService.getPager($scope.users.length, page);
+
+						$scope.slice_users = $scope.users.slice($scope.pager.startIndex, $scope.pager.endIndex);
+					}
+
 				}).error(function(err){
 					console.log(err);
 				});
