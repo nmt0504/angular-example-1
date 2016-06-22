@@ -5,13 +5,15 @@
 	<title>Angular example 1</title>
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="libs/ng-dialog/css/ngDialog.min.css">
+	<link rel="stylesheet" type="text/css" href="libs/ng-dialog/css/ngDialog-theme-default.min.css">
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 </head>
 <body>
 	<div id="wrapper" ng-app="ng-usermanage" ng-controller="usersController">
 		<h1>Users Table</h1>
 		<div class="control-action">
-			<button type="button" class="btn btn-primary">Add user</button>
+			<button type="button" class="btn btn-primary" ng-click="openNewUserDialog()">Add user</button>
 		</div>
 		<table class="table table-hover table-bordered table-responsive">
 	    <thead>
@@ -40,8 +42,8 @@
 	        <td>{{user.phone}}</td>
 	        <td>{{user.address}}</td>
 	        <td>{{user.substr_about}}</td>
-	        <td ng-click="expression"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color: #27ae60;"></i></td>
-	        <td ng-click="expression"><i class="fa fa-times" aria-hidden="true" style="color: #c0392b;"></i></td>
+	        <td ng-click="expression"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color: #27ae60; cursor: pointer;"></i></td>
+	        <td ng-click="expression"><i class="fa fa-times" aria-hidden="true" style="color: #c0392b; cursor: pointer;"></i></td>
 	      </tr>
 	    </tbody>
   	</table>
@@ -67,6 +69,7 @@
 	<script src="libs/angular/angular.min.js"></script>
 	<script src="libs/angular-bootstrap/ui-bootstrap.min.js"></script>
 	<script src="libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script type="text/javascript" src="libs/ng-dialog/js/ngDialog.min.js"></script>
 	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="controllers/usersController.js"></script>
 	<script type="text/javascript" src="services/usersFactory.js"></script>

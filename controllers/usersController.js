@@ -1,6 +1,6 @@
 angular
 			.module('ng-usermanage')
-			.controller('usersController', ['$scope', 'usersFactory', 'pagerService', function($scope, usersFactory, pagerService) {
+			.controller('usersController', ['$scope', 'usersFactory', 'pagerService', 'ngDialog', function($scope, usersFactory, pagerService, ngDialog) {
 				
 				$scope.users;
 
@@ -31,8 +31,26 @@ angular
 						$scope.slice_users = $scope.users.slice($scope.pager.startIndex, $scope.pager.endIndex);
 					}
 
+									// Create dialog for new user
+				$scope.openNewUserDialog = function () {
+					ngDialog.open({
+						template: 'templates/new_user_dialog.html',
+						className: 'ngdialog-theme-default'
+					});
+				}
+
+				// Add new User
+				$scope.newUser = {};
+				$scope.addUser = function(newUser) {
+					console.log("vao day");
+					$scope.users.push(newUser);
+					$scope.newUser = {};
+				}
+
 				}).error(function(err){
 					console.log(err);
 				});
+
+
 
 			}]);

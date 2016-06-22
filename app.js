@@ -3,4 +3,4 @@
 *
 * Description
 */
-angular.module('ng-usermanage', ['ui.bootstrap']);
+angular.module('ng-usermanage', ['ui.bootstrap', 'ngDialog']);
