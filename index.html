@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Angular example 1</title>
+	<link rel="icon" type="image" href="favicon.ico"/>
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="libs/ng-dialog/css/ngDialog.min.css">
@@ -42,8 +43,8 @@
 	        <td>{{user.phone}}</td>
 	        <td>{{user.address}}</td>
 	        <td>{{user.substr_about}}</td>
-	        <td ng-click="expression"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color: #27ae60; cursor: pointer;"></i></td>
-	        <td ng-click="expression"><i class="fa fa-times" aria-hidden="true" style="color: #c0392b; cursor: pointer;"></i></td>
+	        <td ng-click="editUserForm(user)"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color: #27ae60; cursor: pointer;"></i></td>
+	        <td ng-click="deleteUser(user)"><i class="fa fa-times" aria-hidden="true" style="color: #c0392b; cursor: pointer;"></i></td>
 	      </tr>
 	    </tbody>
   	</table>

@@ -6,7 +6,6 @@ angular
 
 				usersService.getUsers().success(function(users){
 					$scope.users = users;
-					console.log($scope.users);
 					for (var i = 0; i < $scope.users.length; i++) {
 						if($scope.users[i].about.length > 50) {
 							$scope.users[i].substr_about = $scope.users[i].about.substr(0, 50);
@@ -57,8 +56,38 @@ angular
 							alert("Data is empty");
 							console.log("Data is empty");
 						}
+						// TODO - Change json file
 					}
 
+					// Show form edit user
+					$scope.editUserForm = function (chosen_user) {
+						var temp_user = chosen_user;
+						ngDialog.open({
+							template: 'templates/edit_user_dialog.html',
+							className: 'ngdialog-theme-default',
+							data: temp_user,
+							scope: $scope
+						});
+					}
+
+					// Edit user function
+					$scope.editUser = function(edit_user) {
+						// TODO - change file json
+						ngDialog.close();
+					}
+
+					// Delete user function
+					$scope.deleteUser = function(user) {
+						var index = $scope.users.findIndex(u => u.index === user.index);
+						if(index > 0) {
+							$scope.users.splice(index, 1);
+							$scope.setPage($scope.pager.currentPage);	
+						} else {
+							alert('User not found');
+							console.log('Not found user');
+						}
+						// TODO - Change json file
+					}
 			
 				}).error(function(err){
 					console.log(err);

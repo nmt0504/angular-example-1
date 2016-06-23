@@ -1,0 +1,31 @@
+<h3 style="text-align: center;">EDIT USER</h3>
+<form role="form">
+  <div class="form-group">
+    <input type="text" class="form-control" id="name" ng-model="ngDialogData.name" placeholder="FullName" required="true">
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" id="age" ng-model="ngDialogData.age" placeholder="Age" required="true">
+  </div>
+  <div class="form-group">
+	  <select class="form-control selectpicker" id="gender" ng-model="ngDialogData.gender" title="Gender">
+	  	<option class="bs-title-option" value="">Gender</option>
+	    <option>female</option>
+	    <option>male</option>
+	    <option>others</option>
+	  </select>
+  </div>
+	<div class="form-group">
+    <input type="text" class="form-control" id="company" ng-model="ngDialogData.company" placeholder="Company">
+  </div>
+	<div class="form-group">
+    <input type="email" class="form-control" id="email" ng-model="ngDialogData.email" placeholder="Email Address" required="true">
+  </div>
+	<div class="form-group">
+    <input type="text" ng-pattern="/^\d+$/" class="form-control" id="phone" ng-model="ngDialogData.phone" placeholder="Phone">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="address" ng-model="ngDialogData.address" placeholder="Address">
+  </div> 
+  <button type="submit" class="btn btn-default" ng-click="editUser(ngDialogData)" style="margin-left: 25%;">Save</button>
+  <button type="submit" class="btn btn-default" ng-click="closeThisDialog('Cancel')" style="margin-left: 15%;">Cancel</button>
+</form>
