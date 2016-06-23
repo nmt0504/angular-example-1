@@ -4,6 +4,7 @@ angular
 				
 				$scope.users = [];
 
+				// Load data from file
 				usersService.getUsers().success(function(users){
 					$scope.users = users;
 					for (var i = 0; i < $scope.users.length; i++) {
@@ -94,3 +95,16 @@ angular
 				});
 
 			}])
+			.directive('ngEnter', function () {
+			    return function (scope, element, attrs) {
+			        element.bind("keydown keypress", function (event) {
+			            if(event.which === 13) {
+			                scope.$apply(function (){
+			                    scope.$eval(attrs.ngEnter);
+			                });
+			 
+			                event.preventDefault();
+			            }
+			        });
+			    };
+			});

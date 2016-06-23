@@ -11,6 +11,15 @@
     padding: 8px;
 	}
 
+	#wrapper table .username i{
+		display: none;
+	}
+
+	#wrapper table .username:hover i {
+		display: block;
+		cursor: pointer;
+	}
+
 	#wrapper table tr:nth-child(even){background-color: #AAE5FF}
 	#wrapper table tr:nth-child(odd){background-color: #FFF7AF}
 
