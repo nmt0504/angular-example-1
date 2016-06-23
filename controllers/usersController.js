@@ -1,11 +1,12 @@
 angular
 			.module('ng-usermanage')
-			.controller('usersController', ['$scope', 'usersFactory', 'pagerService', 'ngDialog', function($scope, usersFactory, pagerService, ngDialog) {
+			.controller('usersController', ['$scope', 'usersService', 'pagerService', 'ngDialog', function($scope, usersService, pagerService, ngDialog) {
 				
-				$scope.users;
+				$scope.users = [];
 
-				usersFactory.getUsers().success(function(users){
+				usersService.getUsers().success(function(users){
 					$scope.users = users;
+					console.log($scope.users);
 					for (var i = 0; i < $scope.users.length; i++) {
 						if($scope.users[i].about.length > 50) {
 							$scope.users[i].substr_about = $scope.users[i].about.substr(0, 50);
@@ -31,26 +32,36 @@ angular
 						$scope.slice_users = $scope.users.slice($scope.pager.startIndex, $scope.pager.endIndex);
 					}
 
-									// Create dialog for new user
-				$scope.openNewUserDialog = function () {
-					ngDialog.open({
-						template: 'templates/new_user_dialog.html',
-						className: 'ngdialog-theme-default'
-					});
-				}
+					// Create form for add user
+					$scope.openNewUserDialog = function () {
+						ngDialog.open({
+							template: 'templates/new_user_dialog.html',
+							className: 'ngdialog-theme-default',
+							scope: $scope
+						});
+					}
 
-				// Add new User
-				$scope.newUser = {};
-				$scope.addUser = function(newUser) {
-					console.log("vao day");
-					$scope.users.push(newUser);
+					var isNotEmpty = function(someObject) {
+						return !angular.equals(someObject, {});
+					}
+
+					// Add user function 
 					$scope.newUser = {};
-				}
+					$scope.addUser = function(newUser) {
+						if(isNotEmpty(newUser)) {
+							$scope.users.push(newUser);
+							$scope.newUser = {};	
+							ngDialog.closeAll();
+							$scope.setPage($scope.pager.totalPages);
+						} else {
+							alert("Data is empty");
+							console.log("Data is empty");
+						}
+					}
 
+			
 				}).error(function(err){
 					console.log(err);
 				});
 
-
-
-			}]);
+			}])
