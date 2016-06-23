@@ -22,6 +22,7 @@
 		    <option>Age</option>
 		    <option>Email</option>
 		  </select>
+		  <label>Search by name only <input class="form-control" ng-model="search.name"></label>
 		</div>
 		<table class="table table-hover table-bordered table-responsive">
 	    <thead>
@@ -40,7 +41,7 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr ng-init="edit=false" ng-repeat="user in slice_users | orderBy:propertyName:reverse">
+	      <tr ng-init="edit=false" ng-repeat="user in slice_users | orderBy:propertyName:reverse | filter:search:strict">
 	        <td>{{user.index}}</td>
 	        <td ng-show="edit==false" class="username">{{user.name}}&nbsp;<i ng-click="edit = true" class="fa fa-edit fa-fw" aria-hidden="true"></i></td>
 	        <td ng-show="edit==true"><input ng-enter="edit=false" type="text" id="name" ng-model="user.name" required="true"></td>
