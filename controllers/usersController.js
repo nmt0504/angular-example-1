@@ -89,6 +89,17 @@ angular
 						}
 						// TODO - Change json file
 					}
+
+					// Sorting feature
+					// Add default sort
+					$scope.propertyName = 'index';
+					$scope.reverse = false;
+					$scope.sortBy = function () {
+						propertyName = $scope.selectedSort.toLowerCase();
+						$scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+						$scope.propertyName = propertyName;
+					}
+
 			
 				}).error(function(err){
 					console.log(err);

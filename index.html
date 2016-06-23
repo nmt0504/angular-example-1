@@ -15,6 +15,13 @@
 		<h1>Users Table</h1>
 		<div class="control-action">
 			<button type="button" class="btn btn-primary" ng-click="openNewUserDialog()">Add user</button>
+			<span>Sort function</span>
+		  <select ng-model="selectedSort" class="selectpicker btn btn-warning" id="sort" title="Sort value" ng-change="sortBy()">
+		  	<option>Index</option>
+		    <option>Name</option>
+		    <option>Age</option>
+		    <option>Email</option>
+		  </select>
 		</div>
 		<table class="table table-hover table-bordered table-responsive">
 	    <thead>
@@ -33,7 +40,7 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr ng-repeat="user in slice_users" ng-init="edit=false">
+	      <tr ng-init="edit=false" ng-repeat="user in slice_users | orderBy:propertyName:reverse">
 	        <td>{{user.index}}</td>
 	        <td ng-show="edit==false" class="username">{{user.name}}&nbsp;<i ng-click="edit = true" class="fa fa-edit fa-fw" aria-hidden="true"></i></td>
 	        <td ng-show="edit==true"><input ng-enter="edit=false" type="text" id="name" ng-model="user.name" required="true"></td>
