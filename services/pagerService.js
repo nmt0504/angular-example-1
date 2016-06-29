@@ -13,7 +13,7 @@ angular
 					currentPage = currentPage || 1;
 
 					// set default pageSize is 10
-					pageSize = pageSize || 4;
+					pageSize = pageSize || 10;
 
 					var totalPages = Math.ceil(totalItems/pageSize);
 

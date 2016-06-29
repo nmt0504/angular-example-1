@@ -80,6 +80,11 @@ angular
 					// Delete user function
 					$scope.deleteUser = function(user) {
 						var index = $scope.users.findIndex(u => u.index === user.index);
+						/*
+							var index = $scope.users.findIndex(function(u){
+								return u.index === user.index;
+							});
+						*/
 						if(index > 0) {
 							$scope.users.splice(index, 1);
 							$scope.setPage($scope.pager.currentPage);	
